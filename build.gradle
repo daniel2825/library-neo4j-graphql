@@ -13,7 +13,6 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.github.sherter.google-java-format', name: 'com.github.sherter.google-java-format.gradle.plugin', version: '0.9', ext: 'pom'
     implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
     implementation 'org.springframework.boot:spring-boot-starter-graphql'
     implementation 'org.springframework.boot:spring-boot-starter-web'
