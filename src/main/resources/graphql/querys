@@ -1,0 +1,115 @@
+query bookDetails {
+  bookByName(name: "cien años de soledad") {
+    name
+    pageCount
+    year
+    author{
+      name
+    }
+  }
+}
+
+mutation AddBook {
+  addBook(book: {name: "Alta Colombia", pageCount: "199", year: "1998"}, author:{name: "Benjamin Villegas" }) {
+    id
+  }
+}
+
+mutation AddAuthor{
+  addAuthor(author: {name:"Benjamin Villegas"}){
+    id
+  }
+}
+
+mutation AddBook {
+  addBook(book: {name: "Alta Colombia", pageCount: "199", year: "1998"}) {
+    id
+  }
+}
+
+mutation AddBook {
+  addBookAndAuthor(
+    book: {name: "Alta Colombia", pageCount: "199", year: "1998"}
+    authors: [{name: "Jimmy Weiskopf"}, {name: "Benjamin Villegas"}, {name: "Carlos Mauricio Vega"}]
+    country: {name: "Colombia"}
+    editorial:{name: "Villegas editores"}
+    city:{name:"Bogotá"}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      name
+    }
+  }
+}
+
+mutation AddBook {
+  addBookAndAuthor(
+    book: {name: "Lonely Planet Argentina", pageCount: "632", year: "2012"}
+    authors: [{name: "Sandra Bao"}, {name: "Gregor Clark"}, {name: "Carolyn McCarthy"}, {name: "Andy Symington"}]
+    country: {name: "Argentina"}
+    editorial: {name: "Lonely Planet"}
+    city: {name: "Buenos Aires"}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      name
+    }
+  }
+}
+
+mutation AddBook {
+  addBookAndAuthor(
+    book: {name: "Pasar inadvertido", pageCount: "264", year: "2023"}
+    authors: [{name: "Benito Taibo"}]
+    country: {name: "Colombia"}
+    editorial: {name: "Seix Barral"}
+    city: {name: "Barcelona"}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      name
+    }
+  }
+}
+
+mutation AddBook {
+  addBookAndAuthor(
+    book: {name: "A Monetary History of Colombia", pageCount: "280", year: "2001"}
+    authors: [{name: "Antonio Hernández-Gamarra"}]
+    country: {name: "Colombia"}
+    editorial: {name: "Villegas editores"}
+    city: {name: "Bogotá"}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      name
+    }
+  }
+}
+
+mutation AddBook {
+  addBookAndAuthor(
+    book: {name: "Proyecto Saberes - ser hacer matemáticas grado 7", pageCount: "304", year: "2016"}
+    authors: [{name: "Santillana"}]
+    country: {name: "Colombia"}
+    editorial: {name: "Santillana Colombia"}
+    city: {name: "Bogotá"}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      name
+    }
+  }
+}
+
+

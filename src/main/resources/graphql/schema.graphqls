@@ -1,0 +1,61 @@
+input BookInput{
+    name: String
+    pageCount: String
+    year: String
+}
+
+input AuthorInput{
+    name: String
+}
+
+input CountryInput{
+    name: String
+}
+
+input CityInput{
+    name: String
+    postalCode: String
+}
+
+input EditorialInput{
+    name: String
+    address: String
+    email: String
+}
+
+type Query {
+    bookByName(name: String): Book
+    findAuthorById(name : String) : Author
+}
+type Mutation {
+    addBookAndAuthor(book:BookInput!, authors:[AuthorInput], country:CountryInput, editorial:EditorialInput, city:CityInput):Book
+    addBook(book:BookInput!): Book
+    addAuthor(author:AuthorInput!): Author
+}
+type Book {
+    id: ID
+    name: String
+    pageCount: String
+    year: String
+    author: [Author]
+    editorial: Editorial
+}
+type Author {
+    id: ID
+    name: String
+}
+type City {
+    id: ID
+    name: String
+    postalCode: String
+}
+type Editorial{
+    name: String
+    address: String
+    email: String
+}
+
+type Country{
+    id:ID
+    name:String
+}

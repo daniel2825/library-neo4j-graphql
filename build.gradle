@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.neo4j.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.github.sherter.google-java-format', name: 'com.github.sherter.google-java-format.gradle.plugin', version: '0.9', ext: 'pom'
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.springframework.graphql:spring-graphql-test'
+    implementation group: 'io.vavr', name: 'vavr', version: '0.10.3'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
+    implementation group: 'org.neo4j', name: 'neo4j-graphql-java', version: '1.5.0'
+    testImplementation 'junit:junit:4.13.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
