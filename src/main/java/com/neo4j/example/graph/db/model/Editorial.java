@@ -1,47 +1,55 @@
 package com.neo4j.example.graph.db.model;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.*;
 
 @Node
 public class Editorial {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String name;
-    private String address;
-    private String email;
+  @Id @GeneratedValue private Long id;
+  private String name;
+  private String address;
+  private String email;
 
-    public Long getId() {
-        return id;
-    }
+  // This other way to make relationship with only use save data saveBook example
+  @Relationship(type = "IS_FROM", direction = Relationship.Direction.OUTGOING)
+  private City city;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public City getCity() {
+    return city;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setCity(City city) {
+    this.city = city;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
 }
