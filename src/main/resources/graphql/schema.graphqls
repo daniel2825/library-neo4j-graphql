@@ -10,6 +10,7 @@ input AuthorInput{
 
 input CountryInput{
     name: String
+    editorial: [EditorialInput]
 }
 
 input CityInput{
@@ -21,6 +22,7 @@ input EditorialInput{
     name: String
     address: String
     email: String
+    city: CityInput
 }
 
 type Query {
@@ -28,8 +30,7 @@ type Query {
     findAuthorById(name : String) : Author
 }
 type Mutation {
-    addBookAndAuthor(book:BookInput!, authors:[AuthorInput], country:CountryInput, editorial:EditorialInput, city:CityInput):Book
-    addBook(book:BookInput!): Book
+    addBook(book:BookInput!, authors:[AuthorInput], country:CountryInput, editorial:EditorialInput):Book
     addAuthor(author:AuthorInput!): Author
 }
 type Book {
@@ -38,7 +39,8 @@ type Book {
     pageCount: String
     year: String
     author: [Author]
-    editorial: Editorial
+    country: [Country]
+    editorial: [Editorial]
 }
 type Author {
     id: ID
@@ -53,6 +55,7 @@ type Editorial{
     name: String
     address: String
     email: String
+    city: [City]
 }
 
 type Country{

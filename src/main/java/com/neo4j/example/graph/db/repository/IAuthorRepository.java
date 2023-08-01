@@ -11,19 +11,16 @@ import java.util.List;
 
 @Repository
 public interface IAuthorRepository extends Neo4jRepository<Author, Long> {
-    Author
-    findByName(String name);
-    // there are two ways
+  Author findByName(String name);
+  // there are two ways
 
-    @Query("MATCH (Book)-[:WRITES]-> (Author) WHERE Book.name= $nameBook RETURN Author")
-    List<Author>
-    findAuthorByBookName(@Param("nameBook") String nameBook);
+  @Query("MATCH (Book)-[:WROTE]-> (Author) WHERE Book.name= $nameBook RETURN Author")
+  List<Author> findAuthorByBookName(@Param("nameBook") String nameBook);
 
-    @Query("MATCH (b:Book),(a:Author) WHERE b.name=$nameBook AND a.name=$nameAuthor RETURN a LIMIT 1")
-    Author
-    findAlreadyExistAuthorInBook(@Param("nameBook") String nameBook, @Param("nameAuthor") String nameAuthor);
+  @Query("MATCH (b:Book),(a:Author) WHERE b.name=$nameBook AND a.name=$nameAuthor RETURN a LIMIT 1")
+  Author findAlreadyExistAuthorInBook(
+      @Param("nameBook") String nameBook, @Param("nameAuthor") String nameAuthor);
 
-    @Query("MATCH (a:Book) RETURN a")
-    List<Author> getAllAuthors();
-
+  @Query("MATCH (a:Book) RETURN a")
+  List<Author> getAllAuthors();
 }
