@@ -16,43 +16,61 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthorComponent {
 
-  private final IAuthorRepository authorRepository;
+    private final IAuthorRepository authorRepository;
 
-  @Autowired
-  public AuthorComponent(IAuthorRepository authorRepository) {
-    this.authorRepository = authorRepository;
-  }
+    @Autowired
+    public AuthorComponent(IAuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
-  public List<Author> authorsExistInDb(Book book, List<Author> authors) {
-    return authors.stream()
-        .map(authorItem -> findAuthor(book, authorItem))
-        .filter(x -> x.getName() != null)
-        .collect(Collectors.toList());
-  }
+    public List<Author> authorsExistInDb(Book book, List<Author> authors) {
+        return authors.stream()
+                .map(authorItem -> findAuthor(book, authorItem))
+                .filter(x -> x.getName() != null)
+                .collect(Collectors.toList());
+    }
 
-  public Author findAuthor(Book book, Author authorItem) {
-    return Optional.ofNullable(
-            authorRepository.findAlreadyExistAuthorInBook(book.getName(), authorItem.getName()))
-        .orElse(new Author());
-  }
+    public Author findAuthor(Book book, Author authorItem) {
+        return Optional.ofNullable(
+                        authorRepository.findAlreadyExistAuthorInBook(book.getName(), authorItem.getName(), authorItem.getCountry().getName()))
+                .orElse(new Author());
+    }
 
-  public List<Author> authorsToSaveInDb(final List<Author> inAuthors, final Book book) {
+    public List<Author> authorsToSaveInDb(final List<Author> inAuthors, final Book book) {
 
-    final List<Author> authorsToFilter = inAuthors;
-    authorsToFilter.addAll(authorsExistInDb(book, inAuthors));
+        final List<Author> authorsToFilter = inAuthors;
+        authorsToFilter.addAll(authorsExistInDb(book, inAuthors));
 
-    return authorsFilteredToSaveInDb(authorsToFilter);
-  }
+        return authorsFilteredToSaveInDb(authorsToFilter);
+    }
 
-  public List<Author> authorsFilteredToSaveInDb(List<Author> authorsToFilter) {
-    final List<String> nameAuthorsExistInDb =
-        authorsToFilter.stream().map(itemName -> itemName.getName()).collect(Collectors.toList());
+    public List<Author> authorsFilteredToSaveInDb(List<Author> authorsToFilter) {
+        final List<String> nameAuthorsExistInDb =
+                authorsToFilter.stream().map(itemName -> itemName.getName()).collect(Collectors.toList());
 
-    authorsToFilter.removeIf(
-        itemAuthor -> Collections.frequency(nameAuthorsExistInDb, itemAuthor.getName()) > 1);
+        authorsToFilter.removeIf(
+                itemAuthor -> Collections.frequency(nameAuthorsExistInDb, itemAuthor.getName()) > 1);
 
-    final List<Author> authorsFiltered = authorsToFilter;
+        final List<Author> authorsFiltered = authorsToFilter;
 
-    return authorsFiltered;
-  }
+        return authorsFiltered;
+    }
+
+    public void authorIsFromCountry(List<Author> authors) {
+
+        authors.forEach(author ->
+                authorRepository.authorIsFromCountry(author.getName(), author.getCountry().getName(), author.getId().toString()));
+    }
+
+    public void nationalityOfAuthors(List<Author> authors) {
+
+        authors.forEach(author ->
+                authorRepository.nationalityOfAuthors(author.getName(), author.getCountry().getName(), author.getId().toString()));
+    }
+
+    public void livesCity(List<Author> authors) {
+
+        authors.forEach(author ->
+                authorRepository.livesCity(author.getName(), author.getCity().getName(), author.getId().toString()));
+    }
 }
