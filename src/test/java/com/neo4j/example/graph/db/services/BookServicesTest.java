@@ -19,16 +19,17 @@ public class BookServicesTest {
     private IBookRepository bookRepository;
     @Mock
     private DataBaseConfig dataBaseConfig;
-
+    
     @BeforeAll
     public void init() throws Exception {
         MockitoAnnotations.openMocks(this);
+        this.bookServices = new BookServices(bookRepository, dataBaseConfig);
     }
-
+    
     @Test
     public void findBook() {
         bookServices.getByName("book-1");
     }
-
-
+    
+    
 }
