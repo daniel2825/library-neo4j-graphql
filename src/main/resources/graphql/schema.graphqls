@@ -5,15 +5,12 @@ input BookInput{
 }
 
 input AuthorInput{
-    id: ID
     name: String
-    country:CountryInput
-    city:CityInput
 }
 
 input CountryInput{
     name: String
-    code_country:String
+    editorial: [EditorialInput]
 }
 
 input CityInput{
@@ -48,8 +45,6 @@ type Book {
 type Author {
     id: ID
     name: String
-    country:[Country]
-    city:[City]
 }
 type City {
     id: ID
@@ -66,5 +61,4 @@ type Editorial{
 type Country{
     id:ID
     name:String
-    code_country:String
 }
