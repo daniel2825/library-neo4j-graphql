@@ -12,9 +12,18 @@ import java.util.List;
 
 @Repository
 public interface ICityRepository extends Neo4jRepository<City, Long> {
-  @Query("MATCH (City) WHERE City.name=$nameCity RETURN City LIMIT 1")
-  City consultCity(@Param("nameCity") String nameCity);
+    @Query("MATCH (City) WHERE City.name=$nameCity RETURN City LIMIT 1")
+    City consultCity(@Param("nameCity") String nameCity);
 
-  @Query("MATCH (Book)-[:WROTE]-> (City) WHERE Book.name= $nameBook RETURN City")
-  List<City> findCityByBookName(@Param("nameBook") String nameBook);
+    @Query("MERGE (c:City {name: $nameCity})")
+    City saveCity(@Param("nameCity") String nameCity);
+
+    @Query(
+            "MATCH (co:Country),(c:City) WHERE co.name=$nameCountry AND c.name=$nameCity "
+                    + "MERGE (c)-[r:CITY_OF]->(co) RETURN c.name")
+    void countryOfCity(
+            @Param("nameCountry") String nameCountry, @Param("nameCity") String nameCity);
+
+    @Query("MATCH (Book)-[:WROTE]-> (City) WHERE Book.name= $nameBook RETURN City")
+    List<City> findCityByBookName(@Param("nameBook") String nameBook);
 }

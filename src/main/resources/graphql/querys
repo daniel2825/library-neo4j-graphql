@@ -128,4 +128,20 @@ mutation AddBook {
   }
 }
 
+mutation AddBook {
+  addBook(
+    book: {name: "Lonely Pla9et Arge6n6i4579", pageCount: "632", year: "2012"}
+    authors: [{name: "Sandra Bao", id: "133235", city: {name: "Bogotá"}, country: {name: "Colombia"}}, {name: "Anders Bao", id: "1043235", city: {name: "Medellín"}, country: {name: "Colombia"}}]
+    country: {name: "Argentina"}
+    editorial: {name: "Lonely Planet2", city: {name: "La plata"}}
+  ) {
+    name
+    year
+    pageCount
+    author {
+      id
+      name
+    }
+  }
+}
 
