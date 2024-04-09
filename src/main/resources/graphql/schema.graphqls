@@ -30,7 +30,7 @@ input EditorialInput{
 
 type Query {
     bookByName(name: String): Book
-    findAuthorById(name : String) : Author
+    findAuthorById(id : String) : Author
 }
 type Mutation {
     addBook(book:BookInput!, authors:[AuthorInput], country:CountryInput, editorial:EditorialInput):Book

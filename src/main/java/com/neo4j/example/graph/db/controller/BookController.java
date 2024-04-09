@@ -69,10 +69,9 @@ public class BookController {
   public Author author(Book book) {
       return authorServices.getAuthor(book.getName());
   }*/
-  /*
+
   @QueryMapping
-  public author findAuthorById(@Argument String id) {
-      return authorServices.getById(id);
+  public Author findAuthorById(@Argument String id) {
+      return authorServices.getAuthor(id).get(0);
   }
-  */
 }

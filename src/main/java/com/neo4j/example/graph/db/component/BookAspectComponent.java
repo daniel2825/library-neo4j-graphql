@@ -72,7 +72,7 @@ public class BookAspectComponent {
     @After(
             value =
                     "execution(* com.neo4j.example.graph.db.services.BookServices.saveBook(..)) and args(book,authors,country,editorial)")
-    public void validateAfterSaveBook5(
+    public void validateAfterSaveBook(
             Book book, List<Author> authors, Editorial editorial, Country country) {
 
         editorialComponent.bookEditorialRelation(book.getName(), editorial.getName());
