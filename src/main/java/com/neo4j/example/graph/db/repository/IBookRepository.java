@@ -29,7 +29,7 @@ public interface IBookRepository extends Neo4jRepository<Book, Long> {
     @Query(
             "MATCH (b:Book),(a:Author) WHERE b.name=$nameBook AND a.name=$nameAuthor "
                     + "MERGE (b)-[r:WROTE_BY]->(a) RETURN b.name")
-    List<String> bookWasWriteByAuthor(
+    List<String> bookWasWroteByAuthor(
             @Param("nameBook") String nameBook, @Param("nameAuthor") String nameAuthor);
 
     @Query(

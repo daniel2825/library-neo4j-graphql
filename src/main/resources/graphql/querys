@@ -1,5 +1,5 @@
 query bookDetails {
-  bookByName(name: "cien años de soledad") {
+  bookByName(name: "Cien años de soledad") {
     name
     pageCount
     year
@@ -10,114 +10,11 @@ query bookDetails {
 }
 
 mutation AddBook {
-  addBook(book: {name: "Alta Colombia", pageCount: "199", year: "1998"}, author:{name: "Benjamin Villegas" }) {
-    id
-  }
-}
-
-mutation AddAuthor{
-  addAuthor(author: {name:"Benjamin Villegas"}){
-    id
-  }
-}
-
-mutation AddBook {
-  addBook(book: {name: "Alta Colombia", pageCount: "199", year: "1998"}) {
-    id
-  }
-}
-
-mutation AddBook {
-  addBookAndAuthor(
-    book: {name: "Alta Colombia", pageCount: "199", year: "1998"}
-    authors: [{name: "Jimmy Weiskopf"}, {name: "Benjamin Villegas"}, {name: "Carlos Mauricio Vega"}]
-    country: {name: "Colombia"}
-    editorial:{name: "Villegas editores"}
-    city:{name:"Bogotá"}
-  ) {
-    name
-    year
-    pageCount
-    author {
-      name
-    }
-  }
-}
-
-mutation AddBook {
-  addBookAndAuthor(
-    book: {name: "Lonely Planet Argentina", pageCount: "632", year: "2012"}
-    authors: [{name: "Sandra Bao"}, {name: "Gregor Clark"}, {name: "Carolyn McCarthy"}, {name: "Andy Symington"}]
-    country: {name: "Argentina"}
-    editorial: {name: "Lonely Planet", city: {name: "Buenos Aires"}}
-  ) {
-    name
-    year
-    pageCount
-    author {
-      name
-    }
-  }
-}
-
-mutation AddBook {
-  addBookAndAuthor(
-    book: {name: "Pasar inadvertido", pageCount: "264", year: "2023"}
-    authors: [{name: "Benito Taibo"}]
-    country: {name: "Colombia"}
-    editorial: {name: "Seix Barral",city: {name: "Barcelona"}}
-
-  ) {
-    name
-    year
-    pageCount
-    author {
-      name
-    }
-  }
-}
-
-mutation AddBook {
   addBook(
-    book: {name: "A Monetary History of Colombia", pageCount: "280", year: "2001"}
-    authors: [{name: "Antonio Hernández-Gamarra"}]
-    country: {name: "Colombia"}
-    editorial: {name: "Villegas editores", city: {name: "Bogotá"}
-   }
-  ) {
-    name
-    year
-    pageCount
-    author {
-      name
-    }
-  }
-}
-
-mutation AddBook {
-  addBookAndAuthor(
     book: {name: "Cien años de soledad", pageCount: "471", year: "1967"}
-    authors: [{name: "Gabriel Garcia Marquez"}]
+    authors: [{name: "Gabriel Garcia Marquez",id: "133235", city: {name: "Aracataca"}, country: {name: "Colombia"}}]
     country: {name: "México"}
-    editorial: {name: "	Editorial Sudamericana"}
-    city: {name: "Buenos Aires"}
-  ) {
-    name
-    year
-    pageCount
-    author {
-      name
-    }
-  }
-}
-
-mutation AddBook {
-  addBookAndAuthor(
-    book: {name: "Proyecto Saberes - ser hacer matemáticas grado 7", pageCount: "304", year: "2016"}
-    authors: [{name: "Santillana"}]
-    country: {name: "Colombia"}
-    editorial: {name: "Santillana Colombia"}
-    city: {name: "Bogotá"}
+    editorial: {name: "	Editorial Sudamericana", city: {name: "Buenos Aires"}}
   ) {
     name
     year
@@ -130,10 +27,10 @@ mutation AddBook {
 
 mutation AddBook {
   addBook(
-    book: {name: "Lonely Pla9et Arge6n6i4579", pageCount: "632", year: "2012"}
-    authors: [{name: "Sandra Bao", id: "133235", city: {name: "Bogotá"}, country: {name: "Colombia"}}, {name: "Anders Bao", id: "1043235", city: {name: "Medellín"}, country: {name: "Colombia"}}]
-    country: {name: "Argentina"}
-    editorial: {name: "Lonely Planet2", city: {name: "La plata"}}
+    book: {name: "Delirio", pageCount: "303", year: "2006"}
+    authors: [{name: "Laura Restrepo", id: "11235", city: {name: "Bogotá"}, country: {name: "Colombia"}}, {name: "Hija", id: "143235", city: {name: "Medellín"}, country: {name: "Colombia"}}]
+    country: {name: "Colombia"}
+    editorial: {name: "Santillana Ediciones Generales", city: {name: "Bogotá"}}
   ) {
     name
     year

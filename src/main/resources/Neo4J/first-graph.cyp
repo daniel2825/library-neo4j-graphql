@@ -10,7 +10,7 @@ CREATE (cien_anos:Book {name: 'Cien años de soledad'})
 CREATE (garcia_marquez:Author {name: 'Gabriel garcia marquez'})
 CREATE (sudamericana:Editorial {name: 'Editorial Sudamericana'})
 //FIRTS WAY RELATIONSHIP FIST USE DATA BASE
-CREATE (cien_anos)-[:WRITES]->(garcia_marquez)
+CREATE (cien_anos)-[:WROTE]->(garcia_marquez)
 CREATE (cien_anos)-[:OWNER]->(sudamericana)
 CREATE (sudamericana)-[:IS_FROM]->(buenos_aires)
 CREATE (cien_anos)-[:MADE]->(colombia)
@@ -19,7 +19,7 @@ MATCH
   (b:Book),
   (a:Author)
   WHERE b.name = 'Cien años de soledad' AND a.name = 'Gabriel garcia marquez'
-CREATE (b)-[r:WRITES]->(a)
+CREATE (b)-[r:WROTE]->(a)
 RETURN type(r);
 
 MATCH
@@ -51,7 +51,7 @@ MATCH(cien_anos:Book {name: 'cien años de soledad'})
 SET cien_anos.pageCount = '471';
 ////////////////DELETE RELATIONSHIP////////////////////// 
 
-MATCH (b:Book {name: 'Cien años de soledad'})-[r:WRITES]->()
+MATCH (b:Book {name: 'Cien años de soledad'})-[r:WROTE]->()
 DELETE r
 
 MATCH (b:Book {name: 'Cien años de soledad'})-[r:OWNER]->()

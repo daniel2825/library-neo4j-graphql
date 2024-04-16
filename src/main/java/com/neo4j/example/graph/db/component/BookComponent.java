@@ -18,7 +18,7 @@ public class BookComponent {
     }
 
     public void bookWasWroteByAuthorRelation(Book book, List<Author> authors) {
-        authors.forEach(a -> bookRepository.bookWasWriteByAuthor(book.getName(), a.getName()));
+        authors.forEach(a -> bookRepository.bookWasWroteByAuthor(book.getName(), a.getName()));
     }
 
     public void authorWroteBookRelation(Book book, List<Author> authors) {

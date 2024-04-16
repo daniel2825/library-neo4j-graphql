@@ -83,7 +83,7 @@ public class BookAspectComponent {
         bookComponent.countryHasBook(book.getName(), country.getName());
         authorComponent.authorIsFromCountry(authors);
         authorComponent.nationalityOfAuthors(authors);
-        authorComponent.livesCity(authors);
+        authorComponent.livedCity(authors);
 
         cityServices.getAllCities().forEach(city -> cityServices.countryOfCity(city.getName()));
 

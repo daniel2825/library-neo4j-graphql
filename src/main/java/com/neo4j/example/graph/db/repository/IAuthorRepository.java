@@ -40,8 +40,8 @@ public interface IAuthorRepository extends Neo4jRepository<Author, Long> {
 
     @Query(
             "MATCH (a:Author),(c:City) WHERE a.name=$nameAuthor AND c.name=$nameCity "
-                    + "MERGE (a)-[r:LIVES]->(c) RETURN c.name")
-    List<String> livesCity(
+                    + "MERGE (a)-[r:LIVED]->(c) RETURN c.name")
+    List<String> livedCity(
             @Param("nameAuthor") String nameAuthor, @Param("nameCity") String nameCity, @Param("id") String id);
 
     @Query("MATCH (a:Book) RETURN a")

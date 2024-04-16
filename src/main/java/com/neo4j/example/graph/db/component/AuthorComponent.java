@@ -68,9 +68,9 @@ public class AuthorComponent {
                 authorRepository.nationalityOfAuthors(author.getName(), author.getCountry().getName(), author.getId().toString()));
     }
 
-    public void livesCity(List<Author> authors) {
+    public void livedCity(List<Author> authors) {
 
         authors.forEach(author ->
-                authorRepository.livesCity(author.getName(), author.getCity().getName(), author.getId().toString()));
+                authorRepository.livedCity(author.getName(), author.getCity().getName(), author.getId().toString()));
     }
 }
